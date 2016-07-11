@@ -3,6 +3,14 @@ extends layout
 block content
 
   h5 Welcome to the Zombie Frontier!
+  header#login
+    if user
+      p Welcome #{user.displayName}
+      p
+        a(href='/logout') Logout
+    else
+      p
+        a(href="/auth/facebook") Login with Facebook!
   
   div#gameboard
   
