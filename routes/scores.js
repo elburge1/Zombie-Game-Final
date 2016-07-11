@@ -9,8 +9,17 @@ function zombieScores(){
 }
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/:index', function(req, res, next) {
+  if(res.locals.user){
+    scores.getByFacebookId(user[0].user_id, req.params.index).then(function(scores){
+      if (scores[0]){
+        res.locals.pageData.scores = scores[0];
+      }
+      res.render('includes/index')
+    });
+  } else {
+    res.render('includes/index')
+  }
 });
 
 module.exports = router;
