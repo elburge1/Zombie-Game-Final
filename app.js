@@ -29,6 +29,39 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'))
+
+app.use(cookieSession({
+  name: 'session',
+  keys: [process.env.SESSION_KEY]
+}));
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done){
+  done(null, user);
+});
+
+passport.use(new FacebookStrategy({
+  clientID: process.env.FACEBOOK_APP_ID,
+  clientSecret: process.env.FACEBOOK_APP_SECRET,
+  callbackURL: process.env.HOST + '/auth/facebook/callback',
+}, passport.authCallback));
+app.use(passport.initialize());
+app.use(passport.session(app.locals.accessToken));
+
+app.use(function (req, res, next) {
+  var accessToken = req.user ? req.user.accessToken : '';
+  rp({uri: `https://graph.facebook.com/me?access_token${accessToken}`})
+  .then(function(){
+    res.locals.user = req.user;
+    next();
+  }).catch(function() {
+    next();
+  })
+})
 
 app.use('/', routes);
 app.use('/users', users);
