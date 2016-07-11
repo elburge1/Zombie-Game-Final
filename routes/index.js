@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var rp = require('request-promise');
-var
+var scoresModel = require('../models/scores')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'The Zombie Frontier' });
+  var user = res.locals.user;
+
+  
 });
 
 module.exports = router;

@@ -11,6 +11,9 @@ module.exports = {
     return knex('user_scores');
   },
   getTopScores: function(){
-    return knex('user_scores').orderBy('score', 'desc');
+    return knex('user_scores').orderBy('score', 'desc').limit(5);
+  },
+  getUserScores: function(user_id){
+    return knex('user_scores').where({user_id: user_id}).orderBy('score', 'desc').limit(5);
   }
 }
