@@ -11,6 +11,9 @@ module.exports = {
       email: profile.email,
       fb_id: profile.id,
       pic_url: profile.picUrl,
-    })
+    });
+  },
+  getByFacebookId: function(id) {
+    return knex('users').where({fb_id: id});
   }
 }
