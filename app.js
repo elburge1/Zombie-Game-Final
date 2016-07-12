@@ -13,7 +13,8 @@ var rp = require('request-promise');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var auth = require('./routes/auth')
+var auth = require('./routes/auth');
+var scores = require('./routes/scores');
 
 var app = express();
 
