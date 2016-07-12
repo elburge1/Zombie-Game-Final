@@ -1,0 +1,25 @@
+extends ../layout.jade
+
+block content
+
+  script(scr="/javascript/places/index.js")
+  section.container.h
+  
+    header#login
+    
+      if user
+        p
+          a(href='/') Home
+        p
+          Welcome #{user.displayName}
+      else
+        p
+          a(href='/') Home
+        p
+          a(href='/auth/facebook') Login with Facebook!
+  
+  main.container.v#zombieStuff
+  
+  
+    section
+      h4 #{user.name}
