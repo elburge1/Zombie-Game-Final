@@ -14,6 +14,6 @@ module.exports = {
     });
   },
   getByFacebookId: function(id) {
-    return knex('users').where({fb_id: id});
+    return knex('zombie_users').where({fb_id: id});
   }
 }
