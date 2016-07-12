@@ -15,10 +15,10 @@ router.get('/:index', function(req, res, next) {
       if (scores[0]){
         res.locals.pageData.scores = scores[0];
       }
-      res.render('includes/index')
+      res.render('/index')
     });
   } else {
-    res.render('includes/index')
+    res.render('/index')
   }
 });
 

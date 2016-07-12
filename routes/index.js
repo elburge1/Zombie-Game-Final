@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     var scores = data;
     return data;
   })
-  res.render('index', {user: user});
+  res.render('index');
 });
 
 router.get('/logout', function(req, res, next) {
