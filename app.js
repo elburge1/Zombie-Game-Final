@@ -61,14 +61,15 @@ app.use(function (req, res, next) {
     next();
   }).catch(function() {
     next();
-  })
-})
+  });
+});
 
 app.use(unirest());
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/auth', auth)
+app.use('/auth', auth);
+app.use('/scores', scores);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
