@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
   Promise.all([scoresModel.getAllScores()])
   .then(data => {
     var scores = data;
+    return data;
   })
   res.render('index');
 });
