@@ -6,6 +6,7 @@ block content
   header#login
     if user
       p Welcome #{user.displayName}
+      p #{userScore}
       p
         a(href='/logout') Logout
     else
@@ -16,5 +17,5 @@ block content
   
   p.story In a world where commercial space travel is feasible...one robot is sent to terraform Mars for human colonization. But there was one thing they never planned on...zombies! Now our hero, Laser McMetallegs, has to fight to survive in an alien environment to make his way back to his robot family.
   
-  script(src="/images/assets/phaser.min.js")
+  script(src='/images/assets/phaser.min.js')
   script(src="/javascripts/game.js")
