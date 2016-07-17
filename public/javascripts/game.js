@@ -221,5 +221,3 @@ function restart(){
   aliveZombies.length = 0;
   create();
 }
-
-module.exports = game;
