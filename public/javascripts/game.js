@@ -100,7 +100,7 @@ function create(){
   }
 
   this.createZombies();
-
+  userName();
 }
 
 function update() {
