@@ -201,6 +201,12 @@ function pewPew(enemy, attack){
   }
 }
 
+function userName(){
+  $.get('/', function(data){
+    console.log(data);
+  })
+}
+
 //game-start function
 function zombieChase(){
   if (introText.visible == true && killRobot == false){
