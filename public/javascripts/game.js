@@ -54,8 +54,8 @@ function create(){
   player = game.add.sprite(32, game.world.height - 64, 'robot');
   player.health = playerMaxHealth;
   player.anchor.set(0.5);
-  player.name = user;
-  console.log(player.name);
+  player.name = user.f_name || 'Robot McMetallegs';
+  player.score = score;
 
   game.physics.arcade.enable(player);
 
@@ -205,6 +205,10 @@ function pewPew(enemy, attack){
     }
   }
 }
+
+// function getScore(){
+//
+// }
 
 //game-start function
 function zombieChase(){

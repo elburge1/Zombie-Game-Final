@@ -58,7 +58,7 @@ app.use(function (req, res, next) {
   // var accessToken = req.user ? req.user.accessToken : '';
   // rp({uri: `https://graph.facebook.com/me?access_token=${accessToken}`})
   // .then(function(){
-    res.locals.user = req.user;
+    res.locals.user = req.user || {};
     next();
   // }).catch(function() {
   //   next();
