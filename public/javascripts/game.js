@@ -10,6 +10,8 @@ function preload(){
   game.load.spritesheet('laser', '../images/assets/beams.png', 20, 30);
 }
 
+
+
 var player;
 var playerMaxHealth = 100;
 var fireRate = 200;
@@ -42,6 +44,8 @@ var killRobot = false;
 function create(){
   game.physics.startSystem(Phaser.Physics.ARCADE);
   game.add.sprite(0, 0, 'mars');
+
+  console.log('user', user);
 
   walkUp = game.input.keyboard.addKey(Phaser.Keyboard.W);
   walkRight = game.input.keyboard.addKey(Phaser.Keyboard.D);
@@ -100,7 +104,6 @@ function create(){
   }
 
   this.createZombies();
-  userName();
 }
 
 function update() {
@@ -165,6 +168,7 @@ function damage(target, attack){
   if (target.health < 1){
     target.kill();
     introText.text = 'YOU LOSE! Click to play again!';
+    console.log(score);
     introText.visible = true;
     game.input.onTap.addOnce(restart, this);
   } else {
@@ -188,6 +192,7 @@ function pewPew(enemy, attack){
       level += 1;
       if (level == 6){
         introText.text = 'YOU WIN! Click to play again!';
+        console.log(score);
         introText.visible = true;
         game.input.onTap.addOnce(restart, this);
       } else {
@@ -201,11 +206,12 @@ function pewPew(enemy, attack){
   }
 }
 
-function userName(){
-  $.get('/', function(data){
-    console.log(data);
-  })
-}
+// function getScore(){
+//   if ($("#loggedIn")){
+//     player.name = $("#loggedIn").html();
+//     console.log(player.name);
+//   }
+// }
 
 //game-start function
 function zombieChase(){

@@ -55,14 +55,14 @@ app.use(passport.initialize());
 app.use(passport.session(app.locals.accessToken));
 
 app.use(function (req, res, next) {
-  var accessToken = req.user ? req.user.accessToken : '';
-  rp({uri: `https://graph.facebook.com/me?access_token=${accessToken}`})
-  .then(function(){
+  // var accessToken = req.user ? req.user.accessToken : '';
+  // rp({uri: `https://graph.facebook.com/me?access_token=${accessToken}`})
+  // .then(function(){
     res.locals.user = req.user;
     next();
-  }).catch(function() {
-    next();
-  });
+  // }).catch(function() {
+  //   next();
+  // });
 });
 
 app.use(unirest());

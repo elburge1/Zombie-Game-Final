@@ -11,9 +11,11 @@ module.exports = {
       email: profile.email,
       fb_id: profile.id,
       pic_url: profile.picUrl,
+    }, '*').then(function (users) {
+      return users[0];
     });
   },
-  getByFacebookId: function(profile) {
-    return knex('zombie_users').where({fb_id: id});
+  getByFacebookId: function(id) {
+    return knex('zombie_users').where({fb_id: id}).first();
   }
 }
