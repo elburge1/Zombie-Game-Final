@@ -167,10 +167,7 @@ function fire(){
 function damage(target, attack){
   if (target.health < 1){
     target.kill();
-    introText.text = 'YOU LOSE! Click to play again!';
-    sendScore(target)
-    introText.visible = true;
-    game.input.onTap.addOnce(restart, this);
+    hideousDefeat();
   } else {
     if (killRobot == true){
       target.health -= attack.damage;
@@ -207,6 +204,13 @@ function grandVictory(){
   introText.text = 'YOU WIN! Click to play again!';
   introText.visible = true;
   sendScore(player)
+  game.input.onTap.addOnce(restart, this);
+}
+
+function hideousDefeat(){
+  introText.text = 'YOU LOSE! Click to play again!';
+  sendScore(player)
+  introText.visible = true;
   game.input.onTap.addOnce(restart, this);
 }
 
