@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
+var users = require('../models/users')
 
 function zombieUsers(){
   return knex('zombie_users');

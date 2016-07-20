@@ -13,7 +13,7 @@ module.exports = {
       pic_url: profile.picUrl,
     });
   },
-  getByFacebookId: function(id) {
+  getByFacebookId: function(profile) {
     return knex('zombie_users').where({fb_id: id});
   }
 }
