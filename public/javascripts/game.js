@@ -185,15 +185,13 @@ function pewPew(enemy, attack){
   attack.kill();
   if (enemy.health < 1){
     enemy.kill();
-    score += 1;
-    scoreText.text = 'Score: ' + score;
+    player.score += 1;
+    scoreText.text = 'Score: ' + player.score;
     aliveZombies.length -= 1;
     if (aliveZombies.length == 0){
       level += 1;
       if (level == 6){
-        introText.text = 'YOU WIN! Click to play again!';
-        introText.visible = true;
-        game.input.onTap.addOnce(restart, this);
+        grandVictory();
       } else {
         this.createZombies();
         killRobot = false;
@@ -203,6 +201,13 @@ function pewPew(enemy, attack){
       }
     }
   }
+}
+
+function grandVictory(){
+  introText.text = 'YOU WIN! Click to play again!';
+  introText.visible = true;
+  sendScore(player)
+  game.input.onTap.addOnce(restart, this);
 }
 
 function sendScore(player){
