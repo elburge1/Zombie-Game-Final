@@ -9,16 +9,13 @@ function zombieScores(){
 }
 
 /* GET users listing. */
-router.get('/:index', function(req, res, next) {
-  if(res.locals.user){
-    scores.getByFacebookId(user[0].user_id, req.params.index).then(function(scores){
-      if (scores[0]){
-        res.locals.pageData.scores = scores[0];
-      }
-      res.render('/index')
-    });
+router.post('/', function(req, res, next) {
+  if(req.user){
+    scores.addScore(req.user.user_id, req.body.score).then(function(){
+      res.json({message: 'Success!'})
+    })
   } else {
-    res.render('/index')
+    res.sendStatus(401)
   }
 });
 

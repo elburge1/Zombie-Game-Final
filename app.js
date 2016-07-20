@@ -28,41 +28,43 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'))
 
 app.use(cookieSession({
-  name: 'session',
-  keys: [process.env.SESSION_KEY]
+    name: 'session',
+    keys: [process.env.SESSION_KEY]
 }));
 
 passport.serializeUser(function(user, done) {
-  done(null, user);
+    done(null, user);
 });
 
-passport.deserializeUser(function(user, done){
-  done(null, user);
+passport.deserializeUser(function(user, done) {
+    done(null, user);
 });
 
 passport.use(new FacebookStrategy({
-  clientID: process.env.FACEBOOK_APP_ID,
-  clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: process.env.HOST + '/auth/facebook/callback',
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: process.env.HOST + '/auth/facebook/callback',
 }, passport.authCallback));
 app.use(passport.initialize());
 app.use(passport.session(app.locals.accessToken));
 
-app.use(function (req, res, next) {
-  // var accessToken = req.user ? req.user.accessToken : '';
-  // rp({uri: `https://graph.facebook.com/me?access_token=${accessToken}`})
-  // .then(function(){
+app.use(function(req, res, next) {
+    // var accessToken = req.user ? req.user.accessToken : '';
+    // rp({uri: `https://graph.facebook.com/me?access_token=${accessToken}`})
+    // .then(function(){
     res.locals.user = req.user || {};
     next();
-  // }).catch(function() {
-  //   next();
-  // });
+    // }).catch(function() {
+    //   next();
+    // });
 });
 
 app.use(unirest());
@@ -74,9 +76,9 @@ app.use('/scores', scores);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -84,23 +86,23 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
 

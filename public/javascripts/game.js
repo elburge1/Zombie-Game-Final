@@ -168,7 +168,7 @@ function damage(target, attack){
   if (target.health < 1){
     target.kill();
     introText.text = 'YOU LOSE! Click to play again!';
-    console.log(score);
+    sendScore(target)
     introText.visible = true;
     game.input.onTap.addOnce(restart, this);
   } else {
@@ -192,7 +192,6 @@ function pewPew(enemy, attack){
       level += 1;
       if (level == 6){
         introText.text = 'YOU WIN! Click to play again!';
-        console.log(score);
         introText.visible = true;
         game.input.onTap.addOnce(restart, this);
       } else {
@@ -206,9 +205,12 @@ function pewPew(enemy, attack){
   }
 }
 
-// function getScore(){
-//
-// }
+function sendScore(player){
+  $.post('/scores', { score: player.score}).done(function(result){
+    console.log(result);
+  // window.location = '/';
+  });
+}
 
 //game-start function
 function zombieChase(){
