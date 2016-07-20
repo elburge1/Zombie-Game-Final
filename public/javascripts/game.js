@@ -45,8 +45,6 @@ function create(){
   game.physics.startSystem(Phaser.Physics.ARCADE);
   game.add.sprite(0, 0, 'mars');
 
-  console.log('user', user);
-
   walkUp = game.input.keyboard.addKey(Phaser.Keyboard.W);
   walkRight = game.input.keyboard.addKey(Phaser.Keyboard.D);
   walkLeft = game.input.keyboard.addKey(Phaser.Keyboard.A);
@@ -56,6 +54,8 @@ function create(){
   player = game.add.sprite(32, game.world.height - 64, 'robot');
   player.health = playerMaxHealth;
   player.anchor.set(0.5);
+  player.name = user;
+  console.log(player.name);
 
   game.physics.arcade.enable(player);
 
@@ -205,13 +205,6 @@ function pewPew(enemy, attack){
     }
   }
 }
-
-// function getScore(){
-//   if ($("#loggedIn")){
-//     player.name = $("#loggedIn").html();
-//     console.log(player.name);
-//   }
-// }
 
 //game-start function
 function zombieChase(){
