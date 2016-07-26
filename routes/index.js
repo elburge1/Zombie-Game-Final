@@ -12,11 +12,13 @@ router.get('/', function(req, res, next) {
     var scores = scoredata[0];
     res.locals.pageData = {};
     res.locals.pageData.scores = [];
-    for (var j = 0; j < scoredata[0].length; j++){
-      res.locals.pageData.scores.push(scores[j].score)
-    }
+    scores.forEach ( (score) => {
+      res.locals.pageData.scores.push({
+        score: score.score,
+      })
+    })
+    res.render('index');
   })
-  res.render('index');
 });
 
 router.get('/logout', function(req, res, next) {
