@@ -14,6 +14,7 @@ router.get('/', function(req, res, next) {
     res.locals.pageData.scores = [];
     scores.forEach ( (score) => {
       res.locals.pageData.scores.push({
+        player: score.user_id,
         score: score.score,
       })
     })
