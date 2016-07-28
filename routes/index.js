@@ -7,7 +7,7 @@ var usersModel = require('../models/users');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var user = res.locals.user;
-  Promise.all([scoresModel.getTopScores(), usersModel.getAllUsers()])
+  Promise.all([scoresModel.getAllScores(), usersModel.getAllUsers()])
   .then(scoredata => {
     console.log(scoredata[1]);
     var scores = scoredata[0];
