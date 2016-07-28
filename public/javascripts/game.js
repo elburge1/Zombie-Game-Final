@@ -203,13 +203,17 @@ function pewPew(enemy, attack){
 function grandVictory(){
   introText.text = 'YOU WIN! Click to play again!';
   introText.visible = true;
-  sendScore(player)
+  if (player.name != 'Robot McMetallegs'){
+    sendScore(player);
+  }
   game.input.onTap.addOnce(restart, this);
 }
 
 function hideousDefeat(){
   introText.text = 'YOU LOSE! Click to play again!';
-  sendScore(player)
+  if (player.name != 'Robot McMetallegs'){
+    sendScore(player);
+  }
   introText.visible = true;
   game.input.onTap.addOnce(restart, this);
 }
@@ -217,7 +221,6 @@ function hideousDefeat(){
 function sendScore(player){
   $.post('/scores', { score: player.score}).done(function(result){
     console.log(result);
-  // window.location = '/';
   });
 }
 
