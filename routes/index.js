@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
   var user = res.locals.user;
   Promise.all([scoresModel.getTopScores(), usersModel.getAllUsers()])
   .then(scoredata => {
-    console.log(scoredata[1]);
     var scores = scoredata[0];
     var players = scoredata[1];
     res.locals.pageData = {};
