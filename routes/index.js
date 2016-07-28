@@ -7,15 +7,24 @@ var usersModel = require('../models/users');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var user = res.locals.user;
-  Promise.all([scoresModel.getTopScores()])
+  Promise.all([scoresModel.getTopScores(), usersModel.getAllUsers()])
   .then(scoredata => {
+    console.log(scoredata[1]);
     var scores = scoredata[0];
+    var players = scoredata[1];
     res.locals.pageData = {};
     res.locals.pageData.scores = [];
     scores.forEach ( (score) => {
-      res.locals.pageData.scores.push({
-        player: score.user_id,
-        score: score.score,
+      // res.locals.pageData.scores.push({
+      //   score: score.score,
+      // })
+      players.forEach((player) => {
+        if (player.user_id === score.user_id){
+          res.locals.pageData.scores.push({
+            player: player.f_name + ' ' + player.l_name,
+            score: score.score,
+          })
+        }
       })
     })
     res.render('index');

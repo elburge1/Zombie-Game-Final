@@ -17,5 +17,8 @@ module.exports = {
   },
   getByFacebookId: function(id) {
     return knex('zombie_users').where({fb_id: id}).first();
+  },
+  getAllUsers: function(){
+    return knex('zombie_users');
   }
 }
