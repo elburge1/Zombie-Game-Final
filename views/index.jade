@@ -2,27 +2,28 @@ extends layout
 
 block content
 
-  h2 Welcome to the Zombie Frontier!
-  header#login
+  div#homepage
+    h2 Welcome to the Zombie Frontier!
+    header#login
+      if user.f_name
+        p Welcome #{user.f_name} #{user.l_name}
+        p
+          a(href='/logout') Logout
+      else
+        p
+          a(href="/auth/facebook") Login with Facebook!
+    
+    div#gameboard
     if user.f_name
-      p Welcome #{user.f_name} #{user.l_name}
-      p
-        a(href='/logout') Logout
+      p.story In a world where commercial space travel is feasible...one robot is sent to terraform Mars for human colonization. But there was one thing they never planned on...zombies! Now our hero, #{user.f_name}, has to fight to survive in an alien environment to make their way back to their robot family.
     else
-      p
-        a(href="/auth/facebook") Login with Facebook!
-  
-  div#gameboard
-  if user.f_name
-    p.story In a world where commercial space travel is feasible...one robot is sent to terraform Mars for human colonization. But there was one thing they never planned on...zombies! Now our hero, #{user.f_name}, has to fight to survive in an alien environment to make their way back to their robot family.
-  else
-    p.story In a world where commercial space travel is feasible...one robot is sent to terraform Mars for human colonization. But there was one thing they never planned on...zombies! Now our hero, Laser McMetallegs, has to fight to survive in an alien environment to make his way back to his robot family.
-  div#highscores
-    ol Leaderboard!
-      each score in pageData.scores
-        li #{score.player} #{score.score}
+      p.story In a world where commercial space travel is feasible...one robot is sent to terraform Mars for human colonization. But there was one thing they never planned on...zombies! Now our hero, Laser McMetallegs, has to fight to survive in an alien environment to make his way back to his robot family.
+    div#highscores
+      ol Leaderboard!
+        each score in pageData.scores
+          li #{score.player} #{score.score}
   
   script(src="https://code.jquery.com/jquery-2.2.1.js")
-  script(src="/stylesheets/materialize.min.css")
+  script(src="/javascripts/materialize.min.js")
   script(src='/images/assets/phaser.min.js')
   script(src="/javascripts/game.js")
