@@ -1,4 +1,4 @@
-var game = new Phaser.Game(800, 580, Phaser.AUTO, 'gameboard',       {
+var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'gameboard',       {
   preload: preload,
   create: create,
   update: update });
@@ -22,7 +22,7 @@ var laserDamage = 4;
 
 var smallEnemy;
 var smallEnemyMaxHealth = 10;
-var smallEnemyDamage = 0.07;
+var smallEnemyDamage = 0.09;
 
 var zombies;
 var zombie;
@@ -135,9 +135,9 @@ function update() {
   if (killRobot == true){
     zombies.forEachAlive(function(zombie){
       if (zombie.health < 6){
-        game.physics.arcade.moveToObject(zombie, player, 160);
+        game.physics.arcade.moveToObject(zombie, player, 170);
       } else {
-        game.physics.arcade.moveToObject(zombie, player, 110);
+        game.physics.arcade.moveToObject(zombie, player, 130);
       }
     })
   }
