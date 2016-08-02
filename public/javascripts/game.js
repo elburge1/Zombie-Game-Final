@@ -76,7 +76,7 @@ function create(){
   lasers.setAll('outOfBoundsKill', true);
 
   scoreText = game.add.text(32, 550, 'Score: ' + score, {font:"20px Inconsolata", fill: "#ffffff", align: 'left'});
-  levelText = game.add.text(32, 500, 'Level: ' + level, {font:"20px Inconsolata", fill: "#ffffff", align: 'left'});
+  levelText = game.add.text(900, 550, 'Level: ' + level, {font:"20px Inconsolata", fill: "#ffffff", align: 'left'});
   introText = game.add.text(400, 100, 'Press Space to defend the homestead!', {font:"20px Inconsolata", fill: "#ffffff", align: "center"});
   healthText = game.add.text(32, 50, 'Health: ' + player.health, {font:"20px Inconsolata", fill: "#ffffff", align: "left"})
   instructions = game.add.text(200, 50, 'W, A, S, D keys to move, point and click to shoot!', {font:"20px Inconsolata", fill: "#ffffff", align: "center"});
@@ -186,6 +186,9 @@ function pewPew(enemy, attack){
     scoreText.text = 'Score: ' + player.score;
     aliveZombies.length -= 1;
     if (aliveZombies.length == 0){
+      lasers.forEachAlive(function(laser){
+        laser.kill();
+      });
       level += 1;
       if (level == 6){
         grandVictory();

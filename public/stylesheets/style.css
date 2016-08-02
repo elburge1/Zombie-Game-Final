@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 32px;
   background-color: #343d46;
   font-family: 'Inconsolata';
   color: #c0c5ce;
@@ -24,7 +24,6 @@ body {
 }
 #highscores{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font: 28px;
+  align-items: left-center;
+  justify-content: left-center;
 }
