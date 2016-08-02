@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
       players.forEach((player) => {
         if (player.user_id === score.user_id){
           res.locals.pageData.scores.push({
-            player: player.f_name + ' ' + player.l_name,
+            player: player,
             score: score.score,
           })
         }

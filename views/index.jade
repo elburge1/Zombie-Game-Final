@@ -21,7 +21,8 @@ block content
     div#highscores
       ol Leaderboard!
         each score in pageData.scores
-          li #{score.player} #{score.score}
+          li <img src='#{score.player.pic_url}'/>
+            p #{score.player.f_name} #{score.player.l_name} #{score.score}
   
   script(src="https://code.jquery.com/jquery-2.2.1.js")
   script(src="/javascripts/materialize.min.js")

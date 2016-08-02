@@ -1,8 +1,9 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #403F3F;
+  background-color: #343d46;
   font-family: 'Inconsolata';
+  color: #c0c5ce;
 }
 .title{
   display: flex;
@@ -11,8 +12,19 @@ body {
   font-family: 'Orbitron', sans-serif;
   color: #c0c5ce;
 }
+.story{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #gameboard{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+#highscores{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 28px;
 }
