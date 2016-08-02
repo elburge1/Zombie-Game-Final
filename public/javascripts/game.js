@@ -38,6 +38,7 @@ var scoreText;
 var introText;
 var healthText;
 var instructions;
+var barConfig = {x: 100, y: 50};
 
 var killRobot = false;
 
@@ -56,6 +57,7 @@ function create(){
   player.anchor.set(0.5);
   player.name = user.f_name || 'Robot McMetallegs';
   player.score = score;
+  player.healthBar = new HealthBar(this.game, barConfig);
 
   game.physics.arcade.enable(player);
 
@@ -77,9 +79,9 @@ function create(){
 
   scoreText = game.add.text(32, 550, 'Score: ' + score, {font:"20px Inconsolata", fill: "#ffffff", align: 'left'});
   levelText = game.add.text(900, 550, 'Level: ' + level, {font:"20px Inconsolata", fill: "#ffffff", align: 'left'});
-  introText = game.add.text(400, 100, 'Press Space to defend the homestead!', {font:"20px Inconsolata", fill: "#ffffff", align: "center"});
-  healthText = game.add.text(32, 10, 'Health: ' + player.health, {font:"20px Inconsolata", fill: "#ffffff", align: "left"})
-  instructions = game.add.text(200, 50, 'W, A, S, D keys to move, point and click to shoot!', {font:"20px Inconsolata", fill: "#ffffff", align: "center"});
+  introText = game.add.text(400, 120, 'Press Space to defend the homestead!', {font:"20px Inconsolata", fill: "#ffffff", align: "center"});
+  healthText = game.add.text(32, 10, 'Health: ', {font:"20px Inconsolata", fill: "#ffffff", align: "left"})
+  instructions = game.add.text(200, 70, 'W, A, S, D keys to move, point and click to shoot!', {font:"20px Inconsolata", fill: "#ffffff", align: "center"});
 
   introText.anchor.setTo(0.5, 0.5);
 
@@ -114,8 +116,6 @@ function update() {
   game.physics.arcade.collide(player, zombies);
   game.physics.arcade.collide(lasers, zombies);
   game.physics.arcade.collide(zombies, zombies);
-  // zombie.body.velocity.x = 0;
-  // zombie.body.velocity.y = 0;
   player.body.velocity.x = 0;
   player.body.velocity.y = 0;
   if (killRobot == true){
@@ -171,6 +171,7 @@ function damage(target, attack){
   } else {
     if (killRobot == true){
       target.health -= attack.damage;
+      player.healthBar.setPercent(target.health/playerMaxHealth * 100);
       healthText.text = 'Health: ' + target.health.toFixed(1);
     }
   }
