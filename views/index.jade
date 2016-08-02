@@ -13,11 +13,13 @@ block content
         p
           a(href="/auth/facebook") Login with Facebook!
     
-    div#gameboard
-    if user.f_name
-      p.story In a world where commercial space travel is feasible...one robot is sent to terraform Mars for human colonization. But there was one thing they never planned on...zombies! Now our hero, #{user.f_name}, has to fight to survive in an alien environment to make their way back to their robot family.
-    else
-      p.story In a world where commercial space travel is feasible...one robot is sent to terraform Mars for human colonization. But there was one thing they never planned on...zombies! Now our hero, Laser McMetallegs, has to fight to survive in an alien environment to make his way back to his robot family.
+    div#container
+      div#gameboard
+      if user.f_name
+        p.story In a world where commercial space travel is feasible...one robot is sent to terraform Mars for human colonization. But there was one thing they never planned on...zombies! Now our hero, #{user.f_name}, has to fight to survive in an alien environment to make their way back to their robot family.
+      else
+        p.story In a world where commercial space travel is feasible...one robot is sent to terraform Mars for human colonization. But there was one thing they never planned on...zombies! Now our hero, Laser McMetallegs, has to fight to survive in an alien environment to make his way back to his robot family.
+        
     div#highscores
       ol Leaderboard!
         each score in pageData.scores
