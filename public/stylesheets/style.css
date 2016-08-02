@@ -1,8 +1,5 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-#homepage {
-  @extend .grey, .darken-3;
+  background-color: #403F3F;
 }
