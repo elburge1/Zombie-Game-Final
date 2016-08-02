@@ -3,3 +3,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #403F3F;
 }
+#gameboard{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
