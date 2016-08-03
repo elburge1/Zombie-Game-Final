@@ -22,7 +22,7 @@ var laserDamage = 4;
 
 var smallEnemy;
 var smallEnemyMaxHealth = 10;
-var smallEnemyDamage = 0.09;
+var smallEnemyDamage = 0.11;
 
 var zombies;
 var zombie;
