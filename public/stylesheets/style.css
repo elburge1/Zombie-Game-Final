@@ -20,9 +20,6 @@ body {
   font-size: 20px;
 }
 #gameboard{
-  /*display: flex;
-  align-items: center;
-  justify-content: center;*/
   outline: #a7adba solid thick;
   width: 1000px;
   height: 580px;
@@ -33,8 +30,14 @@ body {
   align-items: center;
   flex-direction: column;
 }
+#container2{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #highscores{
   display: flex;
-  align-items: left-center;
-  justify-content: left-center;
+  align-items: left;
+  justify-content: left;
 }
