@@ -1,6 +1,5 @@
 body {
   padding: 50px;
-  font: 32px;
   background-color: #343d46;
   font-family: 'Inconsolata';
   color: #c0c5ce;
@@ -17,6 +16,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 50%;
+  font-size: 20px;
 }
 #gameboard{
   /*display: flex;

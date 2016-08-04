@@ -228,7 +228,7 @@ function sendScore(player){
   });
 }
 
-$('.goodPlayer').addClass('animated fadeInUp');
+// $('.goodPlayer').addClass('animated fadeInUp');
 
 //game-start function
 function zombieChase(){
