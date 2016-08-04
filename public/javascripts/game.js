@@ -228,7 +228,6 @@ function sendScore(player){
   });
 }
 
-$('.title').addClass('animated zoomIn');
 $('.goodPlayer').addClass('animated fadeInUp');
 
 //game-start function
