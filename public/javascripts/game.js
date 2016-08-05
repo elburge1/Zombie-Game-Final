@@ -165,7 +165,8 @@ function fire(){
 
 //collision handler for loss of health
 function damage(target, attack){
-  if (target.health < 1){
+  if (target.health <= 0){
+    killRobot = false;
     target.kill();
     hideousDefeat();
   } else {
