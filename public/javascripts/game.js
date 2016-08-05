@@ -173,7 +173,7 @@ function damage(target, attack){
     if (killRobot == true){
       target.health -= attack.damage;
       player.healthBar.setPercent(target.health/playerMaxHealth * 100);
-      healthText.text = 'Health: ' + target.health.toFixed(1);
+      healthText.text = 'Health:'
     }
   }
 }
