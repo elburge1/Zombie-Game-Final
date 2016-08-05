@@ -7,12 +7,19 @@ var usersModel = require('../models/users');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var user = res.locals.user;
-  Promise.all([scoresModel.getTopScores(), usersModel.getAllUsers()])
+  Promise.all([scoresModel.getTopScores(), usersModel.getAllUsers(), scoresModel.getUserScores(user.user_id)])
   .then(scoredata => {
     var scores = scoredata[0];
     var players = scoredata[1];
+    var playerScores = scoredata[2];
     res.locals.pageData = {};
     res.locals.pageData.scores = [];
+    res.locals.pageData.userScores = [];
+    playerScores.forEach( (playerScore) => {
+      res.locals.pageData.userScores.push({
+        playerScore: playerScore.score,
+      })
+    })
     scores.forEach ( (score) => {
       players.forEach((player) => {
         if (player.user_id === score.user_id){
